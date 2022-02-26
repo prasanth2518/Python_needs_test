@@ -1,10 +1,9 @@
-import re
-import traceback
-import urllib.request
-
 import moviepy.editor as mp
 import pafy
+import re
 import requests
+import traceback
+import urllib.request
 import youtube_dl
 from pytube import YouTube
 
@@ -19,7 +18,7 @@ class YouTube_Downloader:
             for url in self.url:
                 video = YouTube(url)
                 stream = video.streams.get_highest_resolution()
-                # stream = video.streams.first()
+                # stream = video.streams.filter(progressive=True, file_extension='mp4').order_by("resolution").desc().first()
                 print("download_started", stream.default_filename)
                 stream.download(output_path=self.path)
                 print("video_download", stream.default_filename)
