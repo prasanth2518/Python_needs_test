@@ -607,6 +607,19 @@ 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
 
 
 
+
+
+xpms
+=======
+DCyYnQ89u4uqZNAZ9dT8
+
+
+
+minio_credentials:
+===================
+AK:   BFF3DOXJ6684K4L5FQQK
+SK:   kz8qvjdYciy4CVZotJOjOnB88VG8w44jUVQ6rqVP
+
 INSTALL PACKAGES:
 =================
 
