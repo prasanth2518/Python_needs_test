@@ -1,9 +1,10 @@
-import moviepy.editor as mp
-import pafy
 import re
-import requests
 import traceback
 import urllib.request
+
+import moviepy.editor as mp
+import pafy
+import requests
 import youtube_dl
 from pytube import YouTube
 

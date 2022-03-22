@@ -6,10 +6,11 @@
 # In[6]:
 
 
-from kafka import KafkaProducer
-from time import sleep
 import json
 from datetime import datetime
+from time import sleep
+
+from kafka import KafkaProducer
 
 # In[ ]:
 
@@ -52,8 +53,6 @@ for i in range(10):
 
 
 from kafka import KafkaConsumer
-from json import loads
-import json
 
 # In[5]:
 

@@ -1,0 +1,647 @@
+{
+  "data": {
+    "inputs": {
+      "_start_": [
+        {
+          "file_path": ["minio://anthemecp/testdb1/uploads/grades.csv"]
+        }
+      ]
+    },
+    "dag": {
+      "task_id": "ee24a952-a60b-4179-8c16-e65596c1dd8f"
+    }
+  },
+  "solution_id": "testdb1"
+}
+
+9553707682
+jFROG: admin/0c2ZRTnc98
+GREATHR :xp01161784/prasanth@25
+exponential ai: Love@324
+hotmAIL : Love$255
+ETAX : CWGPP3617J/love@324
+
+python -m pip install SomePackage
+expression about songs
+Mellifluous
+Dulcet
+Euphonious
+
+xpms_res = "minio://r80x/transfer/console/direct/cd982a25-bcef-4dd1-8d51-ecbcf3db05ab/claim.csv"
+res = XpmsResourceFactory.create_resource(urn = xpms_res)
+res.copy(LocalResource(fullpath="/home/user/ml/claim.csv"))
+131604938
+
+autopep8 --in-place --aggressive --aggressive foo.py
+prod:claims_se/pass1234
+	nurse_Se/pass1234
+underfit model has low variance and high bias
+SELECT salary
+FROM employee
+ORDER BY salary desc limit n-1,1
+
+
+
+SELECT DISTINCT * FROM Student;
+
+SELECT e.employee_id, e.last_name, e.department_id,
+d.department_id, d.location_id
+FROM employees e JOIN departments d
+ON (e.department_id = d.department_id);
+
+.ipynb to .py
+jupyter nbconvert --to python /home/prashanth/Desktop/classification.ipynb
+
+
+pip install --user -r requirements.txt
+pip install --user -r package_name
+pip3 install --user xpms-objects==8.1.0 --no-cache-dir
+
+cat /etc/hosts
+ 1264  netstat -l
+ 1265  netstat -la
+ 1266  ps -A | grep kube
+ 1267  sudo kill 14911
+ 1268  sudo kill
+ 1269  sudo kubefwd svc -c $KUBECONFIG
+ 1270  sudo kill -a
+ 1271  sudo kill all
+ 1272  sudo kill 36894
+
+hdfc 131604938. /Love$25
+
+jupyter notebook --allow-root
+k get deployment -o wide
+kubectl scale deploy ml --replicas=0
+sudo openvpn ~/Downloads/xpvpn_ovpn.ovpn
+kubectl port-forward svc/mongo-proxy 27017 --context public
+k exec -it dag-executor-579db664b4-gtpzz env
+DB_PASSWORD_MONGO=dXv69KTp
+DB_USERID_MONGO=xpdev1
+mongo url for dbconn =discovery-db-shard-00-00-q5i0i.mongodb.net
+
+MONGO_RS_URI=discovery-db-shard-00-00-q5i0i.mongodb.net:27017,discovery-db-shard-00-01-q5i0i.mongodb.net:27017,discovery-db-shard-00-02-q5i0i.mongodb.net:27017
+MONGO_RS_NAME=discovery-db-shard-0
+
+
+sudo apt install yaru-theme-*  ------wrong
+sudo apt install yaru-theme-\*
+
+
+
+ pip3 install /home/user/Music/xpms-objects-8.1.0.tar.gz --no-cache-dir
+
+
+images:
+  - name: quay.io/xpms/document
+    newTag: ENSO-563
+
+
+
+export KUBECONFIG=$PWD/.kube/config
+sudo kubefwd  svc -c $KUBECONFIG
+sudo openvpn ~/Downloads/xpvpn_ovpn.ovpn
+k port-forward svc/mongo-proxy 27017 --context public
+sudo openvpn ~/Downloads/xpvpn_ovpn.ovpn
+kubectl scale --replicas 1 deployment 414ca15a-180e-42e1-9ea3-0466bab26e5f
+
+AG52333
+[17/01 15:03] Vijay Ananth
+
+
+Ndtv.c0m/2717
+
+uan:  101487586413/Love@324
+	100907398003/Rangeswarudu@72
+
+
+
+ -m cProfile -o /tmp/profiling_results microservice/message_handler.py
+
+kubectl cp anthemecp/ml-75688d64f4-84jbm:/tmp/profiling_results /tmp/profile_results
+user@Prashanth:~/Desktop/apache-jmeter-5.2.1/bin$ ./jmeter
+:%s/search/replace/g
+sudo apt-get update && sudo apt-get upgrade
+
+AG82323\appdaata\pip\pip.ini
+AG82323\.pip\pip.conf
+
+
+jupyter nbconvert --to script 'my-notebook.ipynb'
+
+ipython nbconvert notebook.ipynb --to script
+
+
+sudo apt install ipython
+jupyter nbconvert --to script [YOUR_NOTEBOOK].ipynb
+
+
+.    = this directory
+ ..   = the parent directory
+ ../  = the parent directory
+ ~/   = the user's home directory or the application's, in ASP
+ /    = the root directory
+
+ ../../ = the parent's parent directory
+
+
+user-HP-EliteBook-840-G2
+
+sudo nano /etc/hostname
+sudo nano /etc/hosts
+
+
+upsertall(self.instances_dict["instance_id"],self.solution_id)
+
+PIPELINING:
+=============
+
+
+
+Pipelining is a technique that implements a form of parallelism called instruction-level parallelism within a single processor. It therefore allows faster CPU throughput (the number of instructions that can be executed in a unit of time) than would otherwise be possible at a given clock rate. The basic instruction cycle is broken up into a series called a pipeline. Rather than processing each instruction sequentially (finishing one instruction before starting the next), each instruction is split up into a sequence of steps so different steps can be executed in parallel and instructions can be processed concurrently(starting one instruction before finishing the previous one).
+
+
+
+
+
+
+PDB:
+=====
+
+apt-get install vim
+vim filepath
+import pdb;pdb.set_trace()
+python3 path
+
+l ---lines of debugger
+w---- where we r in script
+q----quit
+i---insert
+n---next
+s----stepito the function
+/usr/local/lib/python3.6/site-packages/ml_lib/resources/task_scripts
+
+
+
+
+
+ANTHEM SOLUTION IMPORT CHANGES:
+
+hi sir , Can you Please review these PRs
+
+https://bitbucket.org/xpms/faas/pull-requests/242/feature-819anthem/diff
+
+https://bitbucket.org/xpms/ml/pull-requests/479/feature-819anthem/diff
+
+https://bitbucket.org/xpms/dag-executor/pull-requests/403/feature-8118anthem/diff
+
+
+
+
+
+
+
+
+f_obj = {"name": pipeline_dict["name"], "pipeline_id": pipeline_dict["pipeline_id"],
+                     "solution_id": context.solution_id, "is_deleted": False}
+            duplicates = Pipeline.get(f_obj)
+            if duplicates:
+                PipelineManager.delete_data(context, pipeline_dict, f_obj)
+
+    def delete_data(context,pipeline_dict,f_obj):
+        db = DBProvider.get_instance(db_name=context.solution_id)
+        db.delete(table="dag_pipelines", filter_obj=f_obj)
+        f_obj.pop("name")
+        db.delete(table="dag_pipeline_versions", filter_obj=f_obj)
+        db.delete(table="dag_tasks",filter_obj={"task_id":pipeline_dict["pipeline_id"]})
+        db.delete(table= "dag_task_version_bundle",filter_obj={"task_id":pipeline_dict["pipeline_id"]})
+
+
+Traceback (most recent call last):
+  File "dag-microservice/microservice/message_handler.py", line 15, in <module>
+    from microservice.triggers.list_pipelines_trigger import ListPipelines
+ModuleNotFoundError: No module named 'microservice'
+root@dag-executor-64d447d845-f5n7r:/src# cd dag-microservice/
+root@dag-executor-64d447d845-f5n7r:/src/dag-microservice# export PYTHONPATH=$(pwd)
+root@dag-executor-64d447d845-f5n7r:/src/dag-microservice# python3 /microservice/message_handler.py
+python3: can't open file '/microservice/message_handler.py': [Errno 2] No such file or directory
+root@dag-executor-64d447d845-f5n7r:/src/dag-microservice# python3 microservice/message_handler.py
+
+
+
+
+
+
+{
+  "data": {
+    "dataset": {
+
+        "data_format": "json",
+        "value": {
+          "sl": 1.3,
+          "sw": 2.5,
+          "pl": 5.1,          "pw": 1.4
+        }
+
+    },
+    "mode": "run",
+    "model": {
+      "model_id": "129b5833-7f90-4011-983d-85521b6f71be",
+      "version_id": "40db9228-5b36-439b-b9b2-1360877bc587"
+    }
+  },
+  "solution_id": "newssonp"
+}
+
+
+
+
+
+
+
+
+
+{
+  "data": {
+    "inputs": {
+      "_start_": [
+        {"dataset":{
+          "data_format":"csv","value":"minio://ensolive/testsol46/ml/datasets/a3de9f33-80c5-44a4-ab29-b1191426c619.csv"
+        }
+      }]
+    },
+    "dag": {
+      "task_id": "c7e467d1-8062-423c-9e8f-798a85a8a68a"
+    }
+  },
+  "solution_id": "testsol46"
+}
+
+
+
+
+
+
+
+
+
+{
+  "data": {
+    "inputs": {
+      "_start_": [
+        {"dataset":{
+          "data_format":"csv","value":"minio://anthemecp/testdb1/ml/datasets/c219114b-c0b0-48f9-b331-314819c4639f.csv"
+        }
+      }]
+    },
+    "dag": {
+      "task_id": "e89e03c5-14d1-469e-b730-ea4bfcd06ef8"
+    }
+  },
+  "solution_id": "testdb1"
+}
+
+
+
+
+{
+  "data": {
+    "inputs": {
+      "_start_": [
+        {
+          "dataset": {
+            "data_format": "json",
+            "value": {"A":2596,"B":51,"C":3,"D":258,"E":0,"F":510,"G":221,"H":232,"I":148,"J":6279,"K":1,"L":0,"M":0,"N":0,"O":0,"P":0,"Q":0,"R":0,"S":0,"T":0,"U":0,"V":0,"W":0,"X":0,"Y":0,"Z":0,"AA":0,"AB":0,"AC":0,"AD":0,"AE":0,"AF":0,"AG":0,"AH":0,"AI":0,"AJ":0,"AK":0,"AL":0,"AM":0,"AN":0,"AO":0,"AP":0,"AQ":1,"AR":0,"AS":0,"AT":0,"AU":0,"AV":0,"AW":0,"AX":0,"AY":0,"AZ":0,"BA":0,"BB":0}
+          }
+        }
+      ]
+    },
+    "dag": {
+      "task_id": "e89e03c5-14d1-469e-b730-ea4bfcd06ef8"
+    }
+  },
+  "solution_id": "testdb1"
+}
+
+
+request["payload"]["metadata"]["output"]["result"][0]["data"]["model"]["model_id"]
+request["payload"]["metadata"]["output"]["result"][0]["data"]["exec_mode"]
+request["payload"]["metadata"]["output"]["result"][0]["context"]["extra_payload"]["state"]["doc_id"]
+
+
+
+
+
+
+{
+	"data": {
+		"dataset": {
+			"dataset_id": "1770e958-ab57-4f06-943c-55a604cd86c7"
+		},
+		"is_test": true,
+		"mode": "run",
+		"model": {
+			"model_id": "e2734d20-78e1-4a4b-82df-7041c78dcfa2",
+			"version_id": "0af2dc09-9d46-42ee-9508-8dfefad7ad4d"
+		}
+	},
+	"solution_id": "${solution_id_str}"
+}
+
+
+
+
+
+{
+  "data": {
+    "inputs": {
+      "_start_": [
+        {
+          "dataset": {
+            "data_format": "json",
+            "value": {"sl":4.8,"sw":3.4,"pl":1.9,"pw":0.2}
+          }
+        }
+      ]
+    },
+    "dag": {
+      "task_id": "1841f89a-928d-4d0b-9683-24cc1b46bf3a"
+    }
+  },
+  "solution_id": "testdb1"
+}
+
+
+
+def filter_docs(config=None, **kwargs):
+    doc_list = []
+    documents = kwargs.get("document", [])
+    docs_length=len(documents)
+    if docs_length >=1 :
+        for doc in range(docs_length):
+            if documents[doc]["metadata"]["properties"]["extension"] not in [".zip", ".tar", ".gz", ".tar.gz"]:
+                doc_list.append(documents[doc])
+        return {"document":doc_list}
+
+
+
+msg = '''
+
+'''
+
+MessageHandler.handle_message(msg)
+
+
+Weight G	ain:
+Banana
+curd
+Rice
+Potato
+Dates
+Milk
+Badam
+Groundnut
+
+
+
+Python IMportant Modules:
+
+pygame
+
+
+1.Data Science
+	1.Numpy
+	2.Pandas
+	3.matplotlib
+	4.nltk (natural language tool kit)
+	5.opencv
+2.Machine Learning and AI
+	1.Tensorflow
+	2.Keras
+	3.Pytorch
+	4.scikit-learn
+3.Web Development
+	1.requests
+	2.Django --> for Major
+	3.Flask -->for Minior
+	4. Twisted ---> Online Game Development
+	5.Beaautifulsoup --->Screaping HTML Data
+	6.Selinium -->Automation on websites
+
+
+4.Graphical User Interface
+	1.kivy --> for building Applications irrespctve of the device which we use
+	2.pyQt5--> for graphical look with better performance
+	3.tkinter  --> same as the pyQt5 for getting better performance
+
+
+
+or "processed" in self.config["previous_tasks"]
+
+
+
+                    if "dependencies" in task.config and task.config["dependencies"] == "all":
+                        all_list.append(task.instance_id)
+                    for id in inputs.keys():
+                        if tasks_dict[id].status == "processed":
+                            task_res.append(1)
+                        if len(task_res) == len(inputs.keys()):
+                            k = all_list[0]
+                            return ProcessPool_Executor.run(execution_query,inputs)
+
+
+
+
+
+
+                    if "dependencies" in task.config and task.config["dependencies"] == "all":
+                        all_list.append(task.instance_id)
+                for i in range(len( inputs.keys())):
+                    for id in inputs.keys():
+                        if all_list:
+                            if id != all_list[0]:
+                                k = id
+                            else:
+                                k = all_list[0]
+
+config  = {'source': 'func_xgb_22_21d0697a-4580-4f79-be18-5dfe10f90e1a', 'files': ['minio://anthemecp/testdb1/faas/functions/func_xgb_22/func_xgb_22_21d0697a-4580-4f79-be18-5dfe10f90e1a.py', 'minio://anthemecp/testdb1/faas/functions/func_xgb_22/model_xgb_22.pkl'], 'source_type': 'script', 'conditions': {}, 'task_reference': '', 'previous_tasks': ['processed'], 'src_dir': 'testdb1/ml/d80f4f40-e435-4ab8-a697-d6cb5cb102a1/1da772a7-b03a-4aa4-8232-5e861bfe36e9/Task_16l3yog', 'model': {'pipeline': {'pipeline_id': 'b0368ce2-11ed-43c6-b2f0-2c1a78956e43', 'source': {'model_type': 'classification', 'pipeline_template_name': 'empty'}, 'source_type': 'template', 'pipeline_name': 'xgb_22_base_version', 'version_id': '1da772a7-b03a-4aa4-8232-5e861bfe36e9'}, 'evaluation': {'scores': {'accuracy': 1.0, 'f1': 1.0, 'precision': 1.0, 'recall': 1.0}, 'confusion_metrics': [[1]], 'stats': {'f1_class': [1.0], 'reconstructed_matrix': [[100.0, 100.0], [100.0, 100.0]], 'true_positive': 1, 'true_negative': 0, 'false_positive': 0, 'false_negative': 0, 'true_percentage': 100.0, 'false_percentage': 0.0}}, 'training_dataset': 'ffe68a7b-b60a-47aa-bc9b-6d3ef24c687b', 'status': 'trained', 'version_id': '1da772a7-b03a-4aa4-8232-5e861bfe36e9', 'data_schema': {}, 'is_deleted': False, 'is_enabled': True, 'is_default': True, 'is_published': True, 'parent_version': '1da772a7-b03a-4aa4-8232-5e861bfe36e9', 'model_id': 'd80f4f40-e435-4ab8-a697-d6cb5cb102a1', 'solution_id': 'testdb1', 'name': 'base_version', 'model_type': 'classification', 'data_format': 'csv', 'created_by': 'system', 'modified_by': 'system', 'description': '', '_XpmsObjectMixin__type': 'MLModelVersion', '_XpmsObjectMixin__api_version': '1.0.13', 'cts': '2020-02-27T07:15:24.103585', 'uts': '2020-04-10T14:02:01.637269', 'retraining_threshold': 500}, 'storage': 'minio', 'context': {'solution_id': 'testdb1', 'project_name': 'dag_executor', 'doc_id': None, 'user_info': {}, 'request_id': 'dcc9c283-5080-414c-9901-184074225d4c', 'service_name': 'test_pipeline', 'method_name': 'get_trigger_handler', 'ref_id': '2dd39db4-c269-46d2-b200-b6b273f6e666', 'file_name': None, 'case_id': '', 'entry_stack': [], 'exit_stack': [], 'dag_execution_id': '4RIfyLnaSIiYGgmdqqlqFw', 'original_payload': {'dataset': {'data_format': 'json', 'value': {'A': 2596, 'B': 51, 'C': 3, 'D': 258, 'E': 0, 'F': 510, 'G': 221, 'H': 232, 'I': 148, 'J': 6279, 'K': 1, 'L': 0, 'M': 0, 'N': 0, 'O': 0, 'P': 0, 'Q': 0, 'R': 0, 'S': 0, 'T': 0, 'U': 0, 'V': 0, 'W': 0, 'X': 0, 'Y': 0, 'Z': 0, 'AA': 0, 'AB': 0, 'AC': 0, 'AD': 0, 'AE': 0, 'AF': 0, 'AG': 0, 'AH': 0, 'AI': 0, 'AJ': 0, 'AK': 0, 'AL': 0, 'AM': 0, 'AN': 0, 'AO': 0, 'AP': 0, 'AQ': 1, 'AR': 0, 'AS': 0, 'AT': 0, 'AU': 0, 'AV': 0, 'AW': 0, 'AX': 0, 'AY': 0, 'AZ': 0, 'BA': 0, 'BB': 0}}}, 'exec_timings': {'preprocessing_xgb': '0.000020'}, 'service_request_id': '', 'instance_id': 'TyE8e4LqT9iGAONe0EGQ9Q$ServiceTask_1qo1efg', 'main_dag_exec_id': 'FtMQl9QQRkO-osQTZGEabg', 'req_msg_type': 'api', 'req_trigger': 'run_model', 'model_execution_id': 'c450e86d-6ac0-42ff-8422-77e397ca46d5'}, 'caching': True}
+
+datasets = {"data_format":"data_frame","data_schema":"null","value":{'A': [2596], 'B': [51], 'C': [3], 'D': [258], 'E': [0], 'F': [510], 'G': [221], 'H': [232], 'I': [148], 'J': [6279], 'K': [1], 'L': [0]}}
+
+
+ml_task_payload = {{"data_format":"data_frame","data_schema":"null","value":{'A': [2596], 'B': [51], 'C': [3], 'D': [258], 'E': [0], 'F': [510], 'G': [221], 'H': [232], 'I': [148], 'J': [6279], 'K': [1], 'L': [0]}},{'source': 'func_xgb_22_21d0697a-4580-4f79-be18-5dfe10f90e1a', 'files': ['minio://anthemecp/testdb1/faas/functions/func_xgb_22/func_xgb_22_21d0697a-4580-4f79-be18-5dfe10f90e1a.py', 'minio://anthemecp/testdb1/faas/functions/func_xgb_22/model_xgb_22.pkl'], 'source_type': 'script', 'conditions': {}, 'task_reference': '', 'previous_tasks': ['processed'], 'src_dir': 'testdb1/ml/d80f4f40-e435-4ab8-a697-d6cb5cb102a1/1da772a7-b03a-4aa4-8232-5e861bfe36e9/Task_16l3yog', 'model': {'pipeline': {'pipeline_id': 'b0368ce2-11ed-43c6-b2f0-2c1a78956e43', 'source': {'model_type': 'classification', 'pipeline_template_name': 'empty'}, 'source_type': 'template', 'pipeline_name': 'xgb_22_base_version', 'version_id': '1da772a7-b03a-4aa4-8232-5e861bfe36e9'}, 'evaluation': {'scores': {'accuracy': 1.0, 'f1': 1.0, 'precision': 1.0, 'recall': 1.0}, 'confusion_metrics': [[1]], 'stats': {'f1_class': [1.0], 'reconstructed_matrix': [[100.0, 100.0], [100.0, 100.0]], 'true_positive': 1, 'true_negative': 0, 'false_positive': 0, 'false_negative': 0, 'true_percentage': 100.0, 'false_percentage': 0.0}}, 'training_dataset': 'ffe68a7b-b60a-47aa-bc9b-6d3ef24c687b', 'status': 'trained', 'version_id': '1da772a7-b03a-4aa4-8232-5e861bfe36e9', 'data_schema': {}, 'is_deleted': False, 'is_enabled': True, 'is_default': True, 'is_published': True, 'parent_version': '1da772a7-b03a-4aa4-8232-5e861bfe36e9', 'model_id': 'd80f4f40-e435-4ab8-a697-d6cb5cb102a1', 'solution_id': 'testdb1', 'name': 'base_version', 'model_type': 'classification', 'data_format': 'csv', 'created_by': 'system', 'modified_by': 'system', 'description': '', '_XpmsObjectMixin__type': 'MLModelVersion', '_XpmsObjectMixin__api_version': '1.0.13', 'cts': '2020-02-27T07:15:24.103585', 'uts': '2020-04-10T14:02:01.637269', 'retraining_threshold': 500}, 'storage': 'minio', 'context': {'solution_id': 'testdb1', 'project_name': 'dag_executor', 'doc_id': None, 'user_info': {}, 'request_id': 'dcc9c283-5080-414c-9901-184074225d4c', 'service_name': 'test_pipeline', 'method_name': 'get_trigger_handler', 'ref_id': '2dd39db4-c269-46d2-b200-b6b273f6e666', 'file_name': None, 'case_id': '', 'entry_stack': [], 'exit_stack': [], 'dag_execution_id': '4RIfyLnaSIiYGgmdqqlqFw', 'original_payload': {'dataset': {'data_format': 'json', 'value': {'A': 2596, 'B': 51, 'C': 3, 'D': 258, 'E': 0, 'F': 510, 'G': 221, 'H': 232, 'I': 148, 'J': 6279, 'K': 1, 'L': 0, 'M': 0, 'N': 0, 'O': 0, 'P': 0, 'Q': 0, 'R': 0, 'S': 0, 'T': 0, 'U': 0, 'V': 0, 'W': 0, 'X': 0, 'Y': 0, 'Z': 0, 'AA': 0, 'AB': 0, 'AC': 0, 'AD': 0, 'AE': 0, 'AF': 0, 'AG': 0, 'AH': 0, 'AI': 0, 'AJ': 0, 'AK': 0, 'AL': 0, 'AM': 0, 'AN': 0, 'AO': 0, 'AP': 0, 'AQ': 1, 'AR': 0, 'AS': 0, 'AT': 0, 'AU': 0, 'AV': 0, 'AW': 0, 'AX': 0, 'AY': 0, 'AZ': 0, 'BA': 0, 'BB': 0}}}, 'exec_timings': {'preprocessing_xgb': '0.000020'}, 'service_request_id': '', 'instance_id': 'TyE8e4LqT9iGAONe0EGQ9Q$ServiceTask_1qo1efg', 'main_dag_exec_id': 'FtMQl9QQRkO-osQTZGEabg', 'req_msg_type': 'api', 'req_trigger': 'run_model', 'model_execution_id': 'c450e86d-6ac0-42ff-8422-77e397ca46d5'}, 'caching': True}}
+
+
+
+
+request_message["data"]["model"]["model_id"] and ["version_id"]
+
+
+
+
+
+{
+	"data": {
+		"model": {
+			"model_id": "d80f4f40-e435-4ab8-a697-d6cb5cb102a1",
+			"version_id": "1da772a7-b03a-4aa4-8232-5e861bfe36e9"
+
+		},
+		"dataset": {
+			"data_format": "data_frame",
+			"data_schema": "null",
+			"value": {
+				"A": 2596,
+				"B": 51,
+				"C": 3,
+				"D": 258,
+				"E": 0,
+				"F": 510,
+				"G": 221,
+				"H": 232,
+				"I": 148
+				"J": 6279,
+				"K": 1,
+				"L": 0
+			}
+
+		},
+"exec_mode":"run",
+		"config": {
+			"context": {
+
+			}
+		}
+	},
+	"solution_id": "testdb1"
+}
+
+twillio password:  ?@-myvE@WxDN9VG
+TEST ACCOUNT SID  ACdf096be94fca1d9bf35dd9d12aa688fd
+TEST AUTHTOKEN  3c47032d479ea19f03aa1d4974e08cb7
+
+
+
+
+pima input :
+
+{
+  "data": {
+    "inputs": {
+      "_start_": [
+        {
+          "dataset": {
+            "data_format": "json",
+            "value": {"preg":2596,"plas":51,"pres":3,"skin":258,"test":0,"mass":510,"pedi":221,"age":232,"Outcome":148}
+          }
+        }
+      ]
+    },
+    "dag": {
+      "task_id":"7e509b28-81d4-462b-af1f-15c489e1e30b"
+    }
+  },
+  "solution_id": "testdb1"
+}
+
+
+
+
+
+
+ANTHem Lap Specs:
+=================
+500GB HDD, 32GB RAM, 6 CELLs..9th GEN I7 processor..along with 4GB GRAPHICS..
+
+https://extcitrix.antheminc.com/vpn/index.html
+121395099942
+D60854884
+
+AG82323/Anthem24
+teams,mail: AG82323@ad,wellpoint.com/prasanth.utti@anthem.com
+skype: AG82323@wellpoint.com
+
+WGS: Membership and claims system for various WellPoint States
+
+
+
+
+
+
+IMPORT _SOLUTION:
+
+
+
+import_zip:
+
+
+Request URL: http://canvas-apis.anthemecp.enterprise.xpms.ai/export_import/import_zip
+Request Method: POST
+1.Upload zip fiile in the  solution (minio) in which we want to import   and use path  in the payload
+
+payload :{"import_path":"minio://anthemecp/testsol36/console/import_assets/47ec4359-3c55-473c-8f8d-8b1b8c6afe30/afe45e2c-af00-42de-9045-ebcd08c927ab.zip"}
+
+response :  {staus:200,
+		"json_metdata":{},
+		"import_path":"minio://anthemecp/testsol36/console/import_assets/47ec4359-3c55-473c-8f8d-8b1b8c6afe30/afe45e2c-af00-42de-9045-ebcd08c927ab/import_folder"
+}
+
+
+
+
+resources:
+
+
+Request URL: http://canvas-apis.anthemecp.enterprise.xpms.ai/import/resources
+Request Method: POST
+
+payload:  {"import_path":"minio://anthemecp/testsol36/console/import_assets/47ec4359-3c55-473c-8f8d-8b1b8c6afe30/afe45e2c-af00-42de-9045-ebcd08c927ab/import_folder","assets_json":{}}
+
+response:  {"message":"assets data","data":{},"status":200}
+
+
+git hub token personal:
+=================
+
+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
+
+
+
+INSTALL PACKAGES:
+=================
+
+sudo pip install 'package name' --user
+pip3 install --no-cache-dir xpms_lib_dag==8.1.23.anthem --use-deprecated=legacy-resolver
+
+
+enso-apis_buid with_executor:
+===============================
+
+1. create featurebranch with latest release of enso-apis
+2 .make changes and push
+3. build specified  DOCKER file (.dse/.ocv ..etc) with acr as REGISTRY
+4. create new feature branch (with same name as we given for enso-apis)/ same branch (if you want )
+5. use this tag in the executor and rebuild the executor in AZURE
+6. restart the executor pod
+
+
+SOLID_PRINCIPLES
+================
+
+SRPL:- Singlr Responsibility Principle
+    Each software module have one and only reason to change
+
+
+OCP:- Open Close Principle
+
+LSP:- Liskov Substitution Principle
+
+ISP:- Interface Segregation Principle
+
+DIP:- Dependency Inversion Principle
+
+
+
+
+
+

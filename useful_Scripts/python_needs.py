@@ -1,34 +1,38 @@
 """import modules"""
-import hashlib
-import pandas as pd
-import hmac
-from urllib.parse import urlencode
 import base64
-import functools
-import time
-import json
-import io
-import multiprocessing
-import pyAesCrypt
-import os
-import aiohttp
-import requests
-from cryptography.fernet import Fernet
-import xlrd
 import csv
-import zipfile
-import pyexcel
-from PIL import Image
-from operator import itemgetter
-import itertools
-from collections import defaultdict
-from imapclient import IMAPClient
-import imaplib
 import email
-from email.header import decode_header
-import webbrowser
 import filecmp
+import functools
+import hashlib
+import hmac
+import imaplib
+import io
+import itertools
+import json
+import multiprocessing
+import os
+import re
 import sys
+import time
+import webbrowser
+import zipfile
+from collections import defaultdict
+from datetime import datetime
+from email.header import decode_header
+from operator import itemgetter
+from urllib.parse import urlencode
+
+import aiohttp
+import pandas as pd
+import pyAesCrypt
+import pyexcel
+import requests
+import xlrd
+from PIL import Image
+from cryptography.fernet import Fernet
+from dateutil.parser import parse
+from imapclient import IMAPClient
 
 '''
 hashing
@@ -886,3 +890,26 @@ def hash_file():
 
     print("MD5: {0}".format(md5.hexdigest()))
     print("SHA1: {0}".format(sha1.hexdigest()))
+
+
+'''
+date match regex(mdy)
+'''
+
+
+def date_convert_match():
+    date = str(parse("02/23/4567", fuzzy=True).date())
+    _date = datetime.strptime(date, "%Y-%m-%d").strftime("%m/%d/%Y")
+    match_group = re.match('^(0[1-9]|1[012])*[a-zA-Z]*[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d$', _date)
+    return _date
+
+
+'''
+env vars export
+'''
+
+
+def env_Vars_export():
+    for k, v in json.load(open('env.json')).items():
+        os.environ[k] = v
+    print(os.getenv('DB_PASSWORD_MONGO'))
