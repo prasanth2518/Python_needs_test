@@ -1093,3 +1093,37 @@ def exec_list_conditions(_lval, _rval, inp_df, operator):
     elif operator.lower() in ["not_any", "not_any_startswith"]:
         out_df = inp_df[~inp_df.index.isin(index)] if index else inp_df
     return out_df
+
+'''
+functions with multiple arguments?
+
+
+pool.map() can only execute functions that accept one argument, to run a function that accepts multiple arguments, we can use pool.starmap():
+'''
+
+import multiprocessing as mp
+
+
+def func(x, y):
+    return x * y
+
+p = mp.Pool()
+
+l1 = range(1, 10)
+l2 = range(10, 19)
+
+res = p.starmap(func, zip(l1, l2))
+print(res)
+
+
+'''
+If the other parameters of the function are constants, it may be convenient to use partial functions instead
+'''
+
+from functools import partial
+
+l1 = range(1, 10)
+# If one of the parameters is constant.
+partial_func = partial(func, y=2)
+res = p.map(partial_func, l1)
+print(res)
