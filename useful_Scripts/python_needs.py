@@ -490,7 +490,7 @@ Sort dictionary key or value
 
 
 def sort_dictionary():
-    dictionary_of_names = {'beth': 37, 'jane': 32, 'john': 41, 'mike': 59}
+    dictionary_of_names = {'jane': 32, 'john': 41, 'mike': 59,'beth': 37}
 
     # with keys
     print(dict(sorted(dictionary_of_names.items())))
@@ -1099,6 +1099,12 @@ functions with multiple arguments?
 
 
 pool.map() can only execute functions that accept one argument, to run a function that accepts multiple arguments, we can use pool.starmap():
+
+
+
+pool.close() makes sure that process pool does not accept new processes, and 
+pool.join() waits for the processes to properly finish their work and return. So it is a good idea to use pool.close() and pool.join() explicitly.
+
 '''
 
 import multiprocessing as mp
@@ -1127,3 +1133,36 @@ l1 = range(1, 10)
 partial_func = partial(func, y=2)
 res = p.map(partial_func, l1)
 print(res)
+
+
+'''
+GET DB Timings for diff pipeline runs
+'''
+
+db = DBProvider.get_instance(db_name="testdb1")
+exec_ids_lst = []
+for task_id in ["cffbede2-6e93-4b5a-9a0c-b1595d44421d","3700326d-f47a-49ce-a426-6140d1530519"]:
+    # data = db.find(table="dag_task_executions",filter_obj={"task_id":"cffbede2-6e93-4b5a-9a0c-b1595d44421d"},columns = {"include":["task_id","execution_id"]},sort = [{"key": "update_ts", "order": "dsc"}],limit=10)
+    data = db.find(table="dag_task_executions",filter_obj={"task_id":task_id},columns = {"include":["task_id","execution_id"]},sort = [{"key": "update_ts", "order": "dsc"}],limit=10)
+
+    exec_list = [exec_Data["execution_id"] for exec_Data in data]
+
+
+    lst_mean_time = []
+    for exec_id in exec_list:
+
+        sort = [{"key": "start_ts", "order": "dsc"}]
+        if task_id in ["cffbede2-6e93-4b5a-9a0c-b1595d44421d"]:
+            res = db.find(table="dag_task_instances",filter_obj={"execution_id":exec_id,"name":"Invoke Rule Task"},sort = sort)
+        else:
+            res = db.find(table="dag_task_instances", filter_obj={"execution_id": exec_id, "name": "Invoke Rule Task DAG"},
+                          sort=sort)
+
+        # print("last",res[0]["end_ts"])
+        # print("first",res[0]["start_ts"])
+        t1_d = datetime.datetime.strptime(res[0]["end_ts"], '%Y-%m-%d %H:%M:%S.%f')
+        t2_d = datetime.datetime.strptime(res[0]["start_ts"], '%Y-%m-%d %H:%M:%S.%f')
+        lst_mean_time.append((t1_d-t2_d).total_seconds())
+        print(f"total_time for {exec_id}  {(t1_d-t2_d).total_seconds()}")
+
+    print(f"mean_time {task_id} --> {sum(lst_mean_time)/10}")
