@@ -3,15 +3,15 @@ import logging
 
 # Create and configure logger
 logging.StreamHandler()
-#if filename:
+# if filename:
 # logging.basicConfig(filename="newfile.log",
 #                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
 #                     filemode='w')
 
-#display console
+# display console
 logging.basicConfig(
-                    format='%(asctime)s - %(name)s - %(process)d - %(levelname)s - %(message)s',
-                    filemode='w')
+    format='%(asctime)s - %(name)s - %(process)d - %(levelname)s - %(message)s',
+    filemode='w')
 
 # Creating an object
 logger = logging.getLogger(__name__)

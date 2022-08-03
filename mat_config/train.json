@@ -1,185 +1,177 @@
-
 {
-    # BASIC
-    "version": "1.0.0",
-    "client_id": "af58877",
-    "model_type": "classification",
-    "n_jobs":16,
-    "verbose": 1,
-    "random_state": 0,
-    # Compress pickle files.
-    # - Available since 0.3.0.
-    # - Valid options are:
-    # 0: disable pickle file compression.
-    # 1: enable pickle file compression.
-    "compress": 1,
+  # BASIC
+"version": "1.0.0",
+"client_id": "af58877",
+"model_type": "classification",
+"n_jobs": 16,
+"verbose": 1,
+"random_state": 0,
+# Compress pickle files.
+# - Available since 0.3.0.
+# - Valid options are: # 0: disable pickle file compression.
+# 1: enable pickle file compression.
+"compress": 1,
+# PREP
+"path_to_input": "/data/03/dv/app/ve2/dtl/rska/phi/gbd/r000/bin/mdcr_ra/PERSISTENCY_MODEL/ALL/V2/input/",
+"path_to_output": "/data/03/dv/app/ve2/dtl/rska/phi/gbd/r000/bin/mdcr_ra/PERSISTENCY_MODEL/ALL/V2/output/output_train/",
+"hive_input_data": {
+"db_name":"dv_dtlrskaph_gbd_r000_wk",
+"table_name": "medicare_202001_mbrprstncy_allmbr_20220401_allmbr_merge_upd_new"
+},
+"targets": [
+"num_target_hcc059_only"
+],
+"fill_values_categorical_missing": "UNK",
+"colname_for_id": "mcid",
+"test_size": 0.3,
+# Data balancing.
+# - If the value is null or "model_type" is "regression", then, then this feature will be disabled.
+# - If the input is a float data, then random under sampling will be performed
+#   + The higher the value is, the more (positive) events are sampled.
+#   + Optional, in range (0.0, 1.0).
+#   + If target variable cannot be found, use default value instead.
+# - If the input datatype is a string, then method from imbalanced-learn will be performed.
+#   + Available since 0.3.0.
+#   + For details, see http: //contrib.scikit-learn.org/imbalanced-learn/stable/api.html#module-imblearn.ensemble
+#   + Valid options are: #     * [under-sampling] : "ClusterCentroids", "CondensedNearestNeighbour", "EditedNearestNeighbours", "RepeatedEditedNearestNeighbours",
+#                        : "AllKNN", "InstanceHardnessThreshold", "NearMiss", "NeighbourhoodCleaningRule", "OneSidedSelection",
+#: "RandomUnderSampler", "TomekLinks"
+#     * [over-sampling]  : "RandomOverSampler", "SMOTE", "ADASYN"
+#     * [Combination]    : "SMOTEENN", "SMOTETomek"
+#"train_event_rate": null,
+"train_event_rate": {
+"default": 0.2
+},
+#"train_event_rate": {
+#    "default": {"method": "RandomUnderSampler", "rate": 0.2
+}
+#
+},
+# Standardization.
+# - Avilable since 0.3.0.
+# - Valid options are: #   + "none" (default)
+#   + "std"
+"standardization": {"default": "none"
+},
+# Categorical variable encoding.
+# - Available since 0.4.0.
+# - Valid options are: #   + "one-hot" (default)
+#   + "none"
+#   + "NN"
+"encode_categorical_variable": "one-hot",
+# EXPLORE
+"feature_importance": {
+# Explore with random forest.
+"my_random_forest": {
+"method": "random_forest",
+"params": {
+"n_estimators": 600,
+"min_samples_split": 50,
+"min_samples_leaf": 30
+},
+# Percentage of the dummy variables (associated with a categorical variable) to be retained.
+# - Using Chi-squared (classification) or F-value (regression) statistics to identify the insignificant dummy variables.
+# - Will not perform the method if the number of the assoicated variables is small.
+"dummy_variable_retained_rate": {
+"default": 0.6
+},
+# Run presolve level, integer, default value is 2. Valid options are: # - 0: no presolve.
+# - 1: elmiinate insignificant dummies, low variance and highly-corelated variables.
+# - 2: eliminate insignificant dummies, low variance, highly-corelated, and 0 feature importance (using the specified exploration method) variables.
+"presolve": 0,
+# Number of folds for CV: integer, default is 5.
+"n_folds": 3,
+# Exploration method, possilbe options are: # - "CV": Cross-validation (default)
+# - "RFE": Recursive feature elimination with or without CV
+# - "PS": Permutation selection
+"explore_method": "CV",
+# Number of iterations used in RFE or PS.
+# - For RFE, if the number is greater than or equal to 1, then step corresponds to the (integer) number of features
+#   to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down)
+#   of features to remove at each iteration, (default is 1).
+# - For PS, this number must be greater than or equal to 2, (default is 10).
+"steps": 10
+}
+},
+# BUILD
+"feature_selection": {
+"feature_importance": "my_random_forest",
+"which": "top",
+"threshold": 300
+},
+# Internal sampling.
+# - Avilable since 0.3.0.
+#"sample_rate": {
+"default": 0.75
+},
+# Evaluation metric.
+# - Reference: http: //scikit-learn.org/stable/modules/model_evaluation.html
+#
+# Available options are: # (Classification)
+# - "accuracy"
+# - "roc_auc"
+# - "average_precision"
+# - "neg_log_loss" (or "log_loss")
+# - "f1"
+# - "precision"
+# - "recall"
+#
+# (Regression)
+# - "neg_mean_absolute_error"
+# - "neg_mean_squared_error"
+# - "r2"
+#
+"eval_metric": "roc_auc",
+"n_folds": 3,
+"models": {
+// # BGN my_xgboost_grid.
+// # - Reference: https://xgboost.readthedocs.io/en/latest/python/python_api.html
+"my_lgb_grid": {
+"method": "lightGBM",
+"params": {
+"boosting_type": "gbdt"
+},
+"params_to_search": {
+"n_estimators": [50, 100, 300, 500],
+"learning_rate": [0.5, 0.1, 0.2],
+"num_leaves": [16, 32],
+"max_depth": [3, 6]
+},
+"feature_selection": {
+"which": "coverage",
+"threshold": 0.95
+}
+}, # end of lightGBM
 
-    # PREP
-    "path_to_input": "/data/03/dv/app/ve2/dtl/rska/phi/gbd/r000/bin/mdcr_ra/PERSISTENCY_MODEL/ALL/V2/input/",
-    "path_to_output": "/data/03/dv/app/ve2/dtl/rska/phi/gbd/r000/bin/mdcr_ra/PERSISTENCY_MODEL/ALL/V2/output/output_train/",
-    
-    "hive_input_data":{
-        "db_name":"dv_dtlrskaph_gbd_r000_wk",
-        "table_name": "medicare_202001_mbrprstncy_allmbr_20220401_allmbr_merge_upd_new"
-        
-    },
-    "targets": [ 
-     "num_target_hcc059_only"
-    ],
-    "fill_values_categorical_missing": "UNK",
-    "colname_for_id": "mcid",
-    "test_size": 0.3,
-    # Data balancing.
-    # - If the value is null or "model_type" is "regression", then, then this feature will be disabled.
-    # - If the input is a float data, then random under sampling will be performed
-    #   + The higher the value is, the more (positive) events are sampled.
-    #   + Optional, in range (0.0, 1.0).
-    #   + If target variable cannot be found, use default value instead.
-    # - If the input datatype is a string, then method from imbalanced-learn will be performed.
-    #   + Available since 0.3.0.
-    #   + For details, see http://contrib.scikit-learn.org/imbalanced-learn/stable/api.html#module-imblearn.ensemble
-    #   + Valid options are:
-    #     * [under-sampling] : "ClusterCentroids", "CondensedNearestNeighbour", "EditedNearestNeighbours", "RepeatedEditedNearestNeighbours",
-    #                        : "AllKNN", "InstanceHardnessThreshold", "NearMiss", "NeighbourhoodCleaningRule", "OneSidedSelection",
-    #                        : "RandomUnderSampler", "TomekLinks"
-    #     * [over-sampling]  : "RandomOverSampler", "SMOTE", "ADASYN"
-    #     * [Combination]    : "SMOTEENN", "SMOTETomek"
-    #"train_event_rate": null,
-    "train_event_rate": { "default": 0.2 },
-    #"train_event_rate": {
-    #    "default" : { "method": "RandomUnderSampler", "rate": 0.2 }
-    #},
-    # Standardization.
-    # - Avilable since 0.3.0.
-    # - Valid options are:
-    #   + "none" (default)
-    #   + "std"
-    "standardization": { "default": "none" },
-    # Categorical variable encoding.
-    # - Available since 0.4.0.
-    # - Valid options are:
-    #   + "one-hot" (default)
-    #   + "none"
-    #   + "NN"
-    "encode_categorical_variable": "one-hot",
+"my_rf": {
+"method": "random_forest",
+"params": {
+"min_samples_split": 50,
+"min_samples_leaf": 30,
+"bootstrap": true
+},
+"params_to_search": {
+"n_estimators": [50, 100, 150, 200, 250],
+"max_depth": [4, 6, 8]
+},
+"feature_selection": {
+"which": "coverage",
+"threshold": 0.95
+}
+}
+}, # end of models
 
-    # EXPLORE
-    "feature_importance": {
-        # Explore with random forest.
-        "my_random_forest" : {
-            "method": "random_forest",
-            "params": {
-                "n_estimators": 600,
-                "min_samples_split": 50,
-                "min_samples_leaf": 30
-            },
-            # Percentage of the dummy variables (associated with a categorical variable) to be retained.
-            # - Using Chi-squared (classification) or F-value (regression) statistics to identify the insignificant dummy variables.
-            # - Will not perform the method if the number of the assoicated variables is small.
-            "dummy_variable_retained_rate": {
-                "default": 0.6
-            },
-            # Run presolve level, integer, default value is 2. Valid options are:
-            # - 0 : no presolve.
-            # - 1 : elmiinate insignificant dummies, low variance and highly-corelated variables.
-            # - 2 : eliminate insignificant dummies, low variance, highly-corelated, and 0 feature importance (using the specified exploration method) variables.
-            "presolve": 0,
-            # Number of folds for CV : integer, default is 5.
-            "n_folds": 3,
-            # Exploration method, possilbe options are:
-            # - "CV"  : Cross-validation (default)
-            # - "RFE" : Recursive feature elimination with or without CV
-            # - "PS"  : Permutation selection
-            "explore_method": "CV",
-            # Number of iterations used in RFE or PS.
-            # - For RFE, if the number is greater than or equal to 1, then step corresponds to the (integer) number of features
-            #   to remove at each iteration. If within (0.0, 1.0), then step corresponds to the percentage (rounded down)
-            #   of features to remove at each iteration, (default is 1).
-            # - For PS, this number must be greater than or equal to 2, (default is 10).
-            "steps": 10
-        }
-    },
-
-    # BUILD
-    "feature_selection": {
-        "feature_importance": "my_random_forest",
-        "which": "top",
-        "threshold": 300
-    },
-    # Internal sampling.
-    # - Avilable since 0.3.0.
-    #"sample_rate": { "default": 0.75 },
-    # Evaluation metric.
-    # - Reference: http://scikit-learn.org/stable/modules/model_evaluation.html
-    #
-    # Available options are:
-    # (Classification)
-    # - "accuracy"
-    # - "roc_auc"
-    # - "average_precision"
-    # - "neg_log_loss" (or "log_loss")
-    # - "f1"
-    # - "precision"
-    # - "recall"
-    #
-    # (Regression)
-    # - "neg_mean_absolute_error"
-    # - "neg_mean_squared_error"
-    # - "r2"
-    #
-    "eval_metric": "roc_auc",
-    "n_folds": 3,
-    "models": {
-
-        // # BGN my_xgboost_grid.
-        // # - Reference: https://xgboost.readthedocs.io/en/latest/python/python_api.html
-          "my_lgb_grid": {
-            "method": "lightGBM",
-            "params": {
-                "boosting_type": "gbdt"
-            },
-            "params_to_search": {
-                "n_estimators": [50,100,300,500],
-                "learning_rate": [0.5,0.1,0.2],
-                "num_leaves": [16,32],
-                "max_depth": [3,6]
-            },
-            "feature_selection": {
-                "which": "coverage",
-                "threshold": 0.95
-            }
-    },	# end of lightGBM
-
-        "my_rf": {
-            "method": "random_forest",
-            "params": {
-                "min_samples_split": 50,
-                "min_samples_leaf": 30,
-                "bootstrap": true
-            },
-            "params_to_search": {
-                "n_estimators": [50, 100, 150, 200, 250],
-                "max_depth": [4 , 6, 8 ]
-            },
-            "feature_selection": {
-                "which": "coverage",
-                "threshold": 0.95
-            }
-    }
-
-    },	# end of models
-
-    # MANIFOLD
-    "max_num_samples_for_manifold_learning": 50000,
-    "manifold_learning": {
-        "tsne": {
-            "method": "tsne",
-            "params": {
-               "perplexity": 30.0,
-                "n_iter": 1000,
-                "angle": 0.5
-            }
-         }//,
+# MANIFOLD
+"max_num_samples_for_manifold_learning": 50000,
+"manifold_learning": {
+"tsne": {
+"method": "tsne",
+"params": {
+"perplexity": 30.0,
+"n_iter": 1000,
+"angle": 0.5
+}
+}//,
 //         "sk_tsne": {
 //             "method": "sk_tsne",
 //             "params": {
@@ -190,61 +182,56 @@
 //                 "init": "pca"
 //             }
 //         }
-    },
+},
+# SCORE
 
-    # SCORE
-    
-     "score_analysis_flag": 0,
-     "hive_scoring_data": {
-        "input_db_name": "dv_dtlrskaph_gbd_r000_wk",
-        "input_table_name":"medicare_202206_mbrprstncy_allmbr_20220608_input",
-       
-        "output_db_name": "dv_dtlrskaph_gbd_r000_ou",
-        "output_table_name": "medicare_202206_mbrprstncy_allmbr_202206_hcc059_score_ak",
-        "output_filename":   "medicare_202206_mbrprstncy_allmbr_202206_score_input"
-    },
-
-    
-
-    # SPARK 2.4
-    #export JAVA_HOME=/usr/java/latest/
-    #export PATH=/opt/cloudera/parcels/Anaconda:/opt/cloudera/parcels/Anaconda/bin:$PATH
-    #export SPARK_HOME=/opt/cloudera/parcels/SPARK2/lib/spark2
-    #export PYSPARK_PYTHON=/opt/cloudera/parcels/Anaconda/bin/python
-    #export PYTHONPATH=:/opt/cloudera/parcels/SPARK2/lib/spark2/python::/opt/cloudera/parcels/SPARK2/lib/spark2/python/lib/py4j-0.10.7-src.zip:/opt/cloudera/parcels/SPARK2$
-    "pyspark": {
-        "environment_variables": {
-            "PYSPARK_DRIVER_PYTHON": "/data/01/ds/app/ve2/dtl/dsci/phi/no_gbd/r000/bin/MAT_env_050/bin/python",
-            "PYSPARK_PYTHON": "/mnt/AnalyticalTools/python-3.6/bin/python"
-        },
-        "pyspark_bin": "spark-submit",
-        "options": {
-            "--master": "yarn",
-            "--num-executors": 8,
-            "--executor-memory": "32g",
-            "--executor-cores": 6,
-            "--driver-memory": "80g",
-            "--total-executor-cores": 48,
-            "--queue": "dtl_ecp_yarn", 
-            "--conf": {
-                "spark.cores.max": 100,
-                "spark.executor.memory": "32g",
-                "spark.executor.instances": 50,
-                "spark.driver.memory": "80g",
-                "spark.driver.maxResultSize": "32g",
-                "spark.shuffle.service.enabled": "true",
-                "spark.dynamicAllocation.enabled": "true",
-                "spark.dynamicAllocation.minExecutors": 2,
-                "spark.dynamicAllocation.maxExecutors": 100,
-                "spark.broadcast.compress": "true",
-                "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
-                "spark.kryoserializer.buffer.max": "1g",
-                "spark.executor.memoryOverhead": 5000,
-                "spark.network.timeout": "600s",
-                "spark.shuffle.registration.timeout": "60000",
-                "spark.executor.extrajavaoptions": "-XX:+PrintGCDetails",
-                "spark.sql.codegen.wholeStage": "false"
-            }
-        }
-    }
+"score_analysis_flag": 0,
+"hive_scoring_data": {
+"input_db_name": "dv_dtlrskaph_gbd_r000_wk",
+"input_table_name": "medicare_202206_mbrprstncy_allmbr_20220608_input",
+"output_db_name": "dv_dtlrskaph_gbd_r000_ou",
+"output_table_name": "medicare_202206_mbrprstncy_allmbr_202206_hcc059_score_ak",
+"output_filename": "medicare_202206_mbrprstncy_allmbr_202206_score_input"
+},
+# SPARK 2.4
+#export JAVA_HOME=/usr/java/latest/
+#export PATH=/opt/cloudera/parcels/Anaconda: /opt/cloudera/parcels/Anaconda/bin: $PATH
+#export SPARK_HOME=/opt/cloudera/parcels/SPARK2/lib/spark2
+#export PYSPARK_PYTHON=/opt/cloudera/parcels/Anaconda/bin/python
+#export PYTHONPATH=: /opt/cloudera/parcels/SPARK2/lib/spark2/python::/opt/cloudera/parcels/SPARK2/lib/spark2/python/lib/py4j-0.10.7-src.zip: /opt/cloudera/parcels/SPARK2$
+"pyspark": {
+"environment_variables": {
+"PYSPARK_DRIVER_PYTHON": "/data/01/ds/app/ve2/dtl/dsci/phi/no_gbd/r000/bin/MAT_env_050/bin/python",
+"PYSPARK_PYTHON": "/mnt/AnalyticalTools/python-3.6/bin/python"
+},
+"pyspark_bin": "spark-submit",
+"options": {
+"--master": "yarn",
+"--num-executors": 8,
+"--executor-memory": "32g",
+"--executor-cores": 6,
+"--driver-memory": "80g",
+"--total-executor-cores": 48,
+"--queue": "dtl_ecp_yarn",
+"--conf": {
+"spark.cores.max": 100,
+"spark.executor.memory": "32g",
+"spark.executor.instances": 50,
+"spark.driver.memory": "80g",
+"spark.driver.maxResultSize": "32g",
+"spark.shuffle.service.enabled": "true",
+"spark.dynamicAllocation.enabled": "true",
+"spark.dynamicAllocation.minExecutors": 2,
+"spark.dynamicAllocation.maxExecutors": 100,
+"spark.broadcast.compress": "true",
+"spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+"spark.kryoserializer.buffer.max": "1g",
+"spark.executor.memoryOverhead": 5000,
+"spark.network.timeout": "600s",
+"spark.shuffle.registration.timeout": "60000",
+"spark.executor.extrajavaoptions": "-XX:+PrintGCDetails",
+"spark.sql.codegen.wholeStage": "false"
+}
+}
+}
 }

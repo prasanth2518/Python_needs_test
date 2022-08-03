@@ -1,10 +1,10 @@
 import multiprocessing as mp
-from pathos.multiprocessing import Pool as Pool1
-from pathos.pools import ParallelPool as Pool2
-from pathos.parallel import ParallelPool as Pool3
-from pathos.pools import ProcessPool as Pool4
-from concurrent.futures import ThreadPoolExecutor
 import time
+
+from pathos.multiprocessing import Pool as Pool1
+from pathos.parallel import ParallelPool as Pool3
+from pathos.pools import ParallelPool as Pool2
+from pathos.pools import ProcessPool as Pool4
 
 
 def square(x):
@@ -79,4 +79,3 @@ if __name__ == '__main__':
     p.join()
 
     print('test with pathos parallel: %s seconds' % (time.time() - start_time))
-

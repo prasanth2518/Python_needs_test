@@ -1,0 +1,89 @@
+{
+  "rule_name": "new_Str_rule_test",
+  "start_date": "2022-01-01",
+  "end_date": "2022-04-28",
+  "rule_scope": {
+    "conceptId": "B45",
+    "clientId": "ANTHM"
+  },
+  "description": "Check if provider exclusion",
+  "scope": {
+    "type": "custom",
+    "sub-scope": "",
+    "options": {
+      "page_num": ""
+    }
+  },
+  "conditions": [
+    {
+      "log": "and",
+      "conditions": [
+        {
+          "json_path": "$.claim_header",
+          "lval": "KEY_CHK_DCN_NBR",
+          "op": "==",
+          "rval": "22011BL3390"
+        },
+        {
+          "json_path": "$.claim_header",
+          "lval": "PROV_SPCLTY_CD",
+          "op": "==",
+          "rval": "200"
+        },
+        {
+          "log": "or",
+          "conditions": [
+            {
+              "json_path": "$.claim_header",
+              "lval": "ICD_A_CD",
+              "op": "==",
+              "rval": "J3081"
+            },
+            {
+              "json_path": "$.claim_detail",
+              "lval": "DTL_LINE_NBR",
+              "op": "==",
+              "rval": "01"
+            },
+            {
+              "log": "and",
+              "conditions": [
+                {
+                  "json_path": "$.claim_header",
+                  "lval": "ICD_A_CD",
+                  "op": "==",
+                  "rval": "J3081"
+                },
+                {
+                  "json_path": "$.claim_detail",
+                  "lval": "DTL_LINE_NBR",
+                  "op": "==",
+                  "rval": "01"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "json_path": "$.claim_detail",
+          "lval": "provider_num",
+          "op": "==",
+          "rval": "a"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "json_path": "$.claim_detail",
+      "op": "create_attribute",
+      "lval": "provider_result",
+      "rval": true,
+      "action_type": "custom"
+    }
+  ],
+  "solution_id": "testdb1",
+  "rule_id": "f1592251-8a3b-42ea-be17-c5c45eaf181d_test_new_str",
+  "is_deleted": false,
+  "created_ts": "2022-03-11 08:17:17.670570"
+}
