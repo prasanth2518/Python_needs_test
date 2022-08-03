@@ -73,6 +73,7 @@ hdfc 131604938. /Love$25
 jupyter notebook --allow-root
 k get deployment -o wide
 kubectl scale deploy ml --replicas=0
+k get po | grep dag-executor
 sudo openvpn ~/Downloads/xpvpn_ovpn.ovpn
 kubectl port-forward svc/mongo-proxy 27017 --context public
 k exec -it dag-executor-579db664b4-gtpzz env
@@ -131,7 +132,7 @@ jupyter nbconvert --to script 'my-notebook.ipynb'
 
 ipython nbconvert notebook.ipynb --to script
 
-
+/opt/conda/lib/python3.7/site-packages
 sudo apt install ipython
 jupyter nbconvert --to script [YOUR_NOTEBOOK].ipynb
 
@@ -603,20 +604,7 @@ response:  {"message":"assets data","data":{},"status":200}
 git hub token personal:
 =================
 
-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
-
-
-xpms
-=======
-DCyYnQ89u4uqZNAZ9dT8
-
-
-
-minio_credentials:
-===================
-AK:   BFF3DOXJ6684K4L5FQQK
-SK:   kz8qvjdYciy4CVZotJOjOnB88VG8w44jUVQ6rqVP
-
+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
 
 
 
@@ -636,6 +624,7 @@ INSTALL PACKAGES:
 
 sudo pip install 'package name' --user
 pip3 install --no-cache-dir xpms_lib_dag==8.1.23.anthem --use-deprecated=legacy-resolver
+pip install numpy --upgrade --ignore-installed
 
 
 enso-apis_buid with_executor:
@@ -663,6 +652,9 @@ LSP:- Liskov Substitution Principle
 ISP:- Interface Segregation Principle
 
 DIP:- Dependency Inversion Principle
+
+#get_env
+ env | grep -i PARALLEL_EXEc
 
 
 

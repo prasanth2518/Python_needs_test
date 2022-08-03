@@ -18,6 +18,7 @@ import time
 import webbrowser
 import zipfile
 from collections import defaultdict
+from copy import deepcopy
 from datetime import datetime
 from email.header import decode_header
 from operator import itemgetter
@@ -489,7 +490,7 @@ Sort dictionary key or value
 
 
 def sort_dictionary():
-    dictionary_of_names = {'beth': 37, 'jane': 32, 'john': 41, 'mike': 59}
+    dictionary_of_names = {'jane': 32, 'john': 41, 'mike': 59,'beth': 37}
 
     # with keys
     print(dict(sorted(dictionary_of_names.items())))
@@ -913,3 +914,255 @@ def env_Vars_export():
     for k, v in json.load(open('env.json')).items():
         os.environ[k] = v
     print(os.getenv('DB_PASSWORD_MONGO'))
+
+
+'''
+add numbers recursivly
+'''
+
+
+# method1
+def add_num(num_list, total=None):
+    total = total if total else 0
+    if isinstance(num_list, list):
+        for num in num_list:
+            total = add_num(num, total)
+            total += num
+    else:
+        total + num_list
+    return total
+
+
+def _main_add(num_list):
+    res = add_num(num_list)
+    print(res)
+
+
+_main_add(l)
+
+
+##method2:
+
+def getSum(piece):
+    if len(piece) == 0:
+        return 0
+    else:
+        return piece[0] + getSum(piece[1:])
+
+
+print(getSum([1, 3, 4, 2, 5]))
+
+'''
+read list env var
+'''
+
+env_list = json.loads(os.getenv('ENV_LIST1', '[]'))
+print(env_list)
+print(type(env_list))
+
+'''
+change str recursivly
+'''
+
+
+def modifiy_individual_rule(payload, updated_rules=None):
+    if "conditions" not in payload:
+        print(payload)
+        raise Exception("conditions not found in input payload")
+    if len(payload["conditions"]) == 1:
+        return payload["conditions"][0]
+    modified_rule = deepcopy(payload["conditions"])
+    updated_rules = updated_rules if updated_rules else []
+    if "log" in payload:
+        for each_rule in payload["conditions"]:
+            if each_rule != payload["conditions"][-1]:
+                modified_rule.insert(modified_rule.index(each_rule) + 1, {"log": payload["log"]})
+        for _each_mod_rule in modified_rule:
+            if "conditions" not in _each_mod_rule:
+                updated_rules.append(_each_mod_rule)
+                continue
+            _mod_rule = modifiy_individual_rule(_each_mod_rule)
+            updated_rules.append(_mod_rule)
+        return updated_rules
+
+
+def get_modified_rules(_rule_json):
+    conditions = _rule_json["conditions"][0]
+    updated_rules = modifiy_individual_rule(conditions)
+    if not isinstance(updated_rules, list):
+        updated_rules = [updated_rules]
+    _rule_json["conditions"] = updated_rules
+    return _rule_json
+
+
+'''
+Quey executions 
+'''
+
+
+def create_condition_string(match_Rkey, match_Lkey, operator, lvalue, rvalue):
+    # query_str = '(name == "patient_first_name" and value == "Linda") or (name == "sex" and value == "Female")'
+    if operator in ["==", ">", "<", "!=", ">=", "<="]:
+        if not match_Rkey and not match_Lkey:
+            if isinstance(rvalue, str):
+                base_q = '{lvalue} {op} "{rvalue}"'
+            else:
+                base_q = '{lvalue} {op} {rvalue}'
+        else:
+            if isinstance(rvalue, str):
+                base_q = '{match_Lkey} == "{lvalue}" and {match_Rkey} {op} "{rvalue}"'
+            else:
+                base_q = '{match_Lkey} == "{lvalue}" and {match_Rkey} {op} {rvalue}'
+
+        if lvalue == "":
+            if isinstance(rvalue, str):
+                base_q = '{match_Rkey} {op} "{rvalue}"'
+            else:
+                base_q = '{match_Rkey} {op} {rvalue}'
+            cond_string = base_q.format(
+                match_Rkey=match_Rkey,
+                op=operator,
+                rvalue=rvalue)
+        elif rvalue == "":
+            if isinstance(lvalue, str):
+                base_q = '{match_Lkey} {op} "{lvalue}"'
+            else:
+                base_q = '{match_Lkey} {op} {lvalue}'
+            cond_string = base_q.format(
+                match_Lkey=match_Lkey,
+                op=operator,
+                lvalue=lvalue)
+        else:
+            cond_string = base_q.format(
+                match_Lkey=match_Lkey,
+                lvalue=lvalue,
+                match_Rkey=match_Rkey,
+                op=operator,
+                rvalue=rvalue)
+
+    elif operator.lower() == "contains":
+        if not match_Rkey and not match_Lkey:
+            cond_string = '{lvalue}.str.contains(@rvalue, na=False)'.format(
+                lvalue=lvalue,
+                op=operator)
+        else:
+            if lvalue == "":
+                cond_string = '{match_Rkey}.str.contains(@rvalue, na=False)'.format(match_Rkey=match_Rkey)
+            elif rvalue == "":
+                cond_string = '{match_Lkey}.str.contains(@lvalue, na=False)'.format(match_Lkey=match_Lkey)
+            else:
+                cond_string = '{match_Lkey} == "{lvalue}" and {match_Rkey}.str.contains(@rvalue, na=False)'.format(
+                    match_Lkey=match_Lkey,
+                    lvalue=lvalue,
+                    match_Rkey=match_Rkey,
+                    op=operator)
+    elif operator.lower() == "regex":
+        if not match_Rkey and not match_Lkey:
+            cond_string = '{lvalue}.str.contains(@rvalue, na=False, regex=True)'.format(
+                lvalue=lvalue,
+                op=operator)
+        else:
+            if lvalue == "":
+                cond_string = '{match_Rkey}.str.contains(@rvalue, na=False, regex=True)'.format(match_Rkey=match_Rkey)
+            elif rvalue == "":
+                cond_string = '{match_Lkey}.str.contains(@lvalue, na=False, regex=True)'.format(match_Lkey=match_Lkey)
+            else:
+                cond_string = '{match_Lkey} == "{lvalue}" and {match_Rkey}.str.contains(@rvalue, na=False, regex=True)'.format(
+                    match_Lkey=match_Lkey,
+                    lvalue=lvalue,
+                    match_Rkey=match_Rkey,
+                    op=operator)
+    elif operator.lower() == "in":
+        cond_string = '{lvalue}.isin({rvalue})'.format(lvalue=lvalue, rvalue=rvalue)
+    elif operator.lower() == "notin":
+        cond_string = '~{lvalue}.isin({rvalue})'.format(lvalue=lvalue, rvalue=rvalue)
+    else:
+        cond_string = ""
+    return cond_string
+
+
+def exec_list_conditions(_lval, _rval, inp_df, operator):
+    out_df = pd.DataFrame()
+    lis = inp_df[_lval].to_list()
+    if operator.lower() in ["any_startswith", "not_any_startswith"]:
+        index = list(set([lis.index(j) for j in lis for l in j for m in _rval if l.startswith(m)]))
+    else:
+        index = [lis.index(j) for j in lis if set(j).intersection(set(_rval))]
+    if operator.lower() in ["any", "any_startswith"]:
+        out_df = inp_df[inp_df.index.isin(index)] if index else out_df
+    elif operator.lower() in ["not_any", "not_any_startswith"]:
+        out_df = inp_df[~inp_df.index.isin(index)] if index else inp_df
+    return out_df
+
+'''
+functions with multiple arguments?
+
+
+pool.map() can only execute functions that accept one argument, to run a function that accepts multiple arguments, we can use pool.starmap():
+
+
+
+pool.close() makes sure that process pool does not accept new processes, and 
+pool.join() waits for the processes to properly finish their work and return. So it is a good idea to use pool.close() and pool.join() explicitly.
+
+'''
+
+import multiprocessing as mp
+
+
+def func(x, y):
+    return x * y
+
+p = mp.Pool()
+
+l1 = range(1, 10)
+l2 = range(10, 19)
+
+res = p.starmap(func, zip(l1, l2))
+print(res)
+
+
+'''
+If the other parameters of the function are constants, it may be convenient to use partial functions instead
+'''
+
+from functools import partial
+
+l1 = range(1, 10)
+# If one of the parameters is constant.
+partial_func = partial(func, y=2)
+res = p.map(partial_func, l1)
+print(res)
+
+
+'''
+GET DB Timings for diff pipeline runs
+'''
+
+db = DBProvider.get_instance(db_name="testdb1")
+exec_ids_lst = []
+for task_id in ["cffbede2-6e93-4b5a-9a0c-b1595d44421d","3700326d-f47a-49ce-a426-6140d1530519"]:
+    # data = db.find(table="dag_task_executions",filter_obj={"task_id":"cffbede2-6e93-4b5a-9a0c-b1595d44421d"},columns = {"include":["task_id","execution_id"]},sort = [{"key": "update_ts", "order": "dsc"}],limit=10)
+    data = db.find(table="dag_task_executions",filter_obj={"task_id":task_id},columns = {"include":["task_id","execution_id"]},sort = [{"key": "update_ts", "order": "dsc"}],limit=10)
+
+    exec_list = [exec_Data["execution_id"] for exec_Data in data]
+
+
+    lst_mean_time = []
+    for exec_id in exec_list:
+
+        sort = [{"key": "start_ts", "order": "dsc"}]
+        if task_id in ["cffbede2-6e93-4b5a-9a0c-b1595d44421d"]:
+            res = db.find(table="dag_task_instances",filter_obj={"execution_id":exec_id,"name":"Invoke Rule Task"},sort = sort)
+        else:
+            res = db.find(table="dag_task_instances", filter_obj={"execution_id": exec_id, "name": "Invoke Rule Task DAG"},
+                          sort=sort)
+
+        # print("last",res[0]["end_ts"])
+        # print("first",res[0]["start_ts"])
+        t1_d = datetime.datetime.strptime(res[0]["end_ts"], '%Y-%m-%d %H:%M:%S.%f')
+        t2_d = datetime.datetime.strptime(res[0]["start_ts"], '%Y-%m-%d %H:%M:%S.%f')
+        lst_mean_time.append((t1_d-t2_d).total_seconds())
+        print(f"total_time for {exec_id}  {(t1_d-t2_d).total_seconds()}")
+
+    print(f"mean_time {task_id} --> {sum(lst_mean_time)/10}")
