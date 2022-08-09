@@ -25,6 +25,7 @@ for filed in fields:
     else:
         if filed["name"] in procesed_list:
             copied_list.append(filed["name"])
+        filed["value"] = filed["name"]
         filed["name"] = map_Df[map_Df["Technical Criteria Names"] == filed["name"]]["Business Field Names"].to_list()[0]
         procesed_list.append(filed["name"])
 
